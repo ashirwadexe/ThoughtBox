@@ -1,16 +1,11 @@
-import { Request, Response } from "express";
 import mongoose from "mongoose";
 
-const connectDB = async (req: Request, res: Response) => {
+const connectDB = async () => {
     try {
-        await mongoose.connect(process.env.MONGO_URI || "");
+        await mongoose.connect(process.env.MONGO_URI || "mongodb+srv://bappyashirwad:irn7nQDiDgaYl0hW@thoughtbox.wefle.mongodb.net/");
         console.log("MongoDB Connected Successfully!")
     } catch (error) {
         console.log(error);
-        return res.status(500).json({
-            message: "Server error",
-            success: false
-        });
     }
 };
 
