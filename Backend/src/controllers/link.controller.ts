@@ -7,6 +7,8 @@ import { User } from "../models/user.model";
 export const shareLink = async (req: Request, res: Response): Promise<void> => {
     const share = req.body.share;
     const userId = req.id;
+
+    // if share = true
     if (share) {
         const existingLink = await Link.findOne({
             userId: userId
@@ -25,7 +27,7 @@ export const shareLink = async (req: Request, res: Response): Promise<void> => {
             hash: hash
         });
 
-        res.json({
+        res.status(200).json({
             hash
         });
     } else {
