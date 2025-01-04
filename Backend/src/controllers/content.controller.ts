@@ -78,7 +78,7 @@ export const getAllContent = async (req: Request, res: Response): Promise<void> 
 export const deleteContent = async (req: Request, res: Response): Promise<void> => {
     try {
         
-        const contentId = req.params.id;
+        const contentId = req.body.contentId;
         const userId = req.id;
 
         const content = await Content.findById(contentId);
