@@ -3,8 +3,10 @@ import express from "express";
 const app = express();
 import userRouter from "./routes/user.route";
 import contentRouter from "./routes/content.route";
+import linkRouter from "./routes/link.route"
 import connectDB from "./utils/db";
 import cookieParser from "cookie-parser";
+
 
 //load env files
 dotenv.config();
@@ -16,6 +18,8 @@ const PORT = process.env.PORT || 8080;
 //api's
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/content", contentRouter)
+app.use("/api/v1/brain", linkRouter);
+
 
 app.listen(PORT, () => {
     connectDB();
