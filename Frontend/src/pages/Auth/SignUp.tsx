@@ -4,7 +4,7 @@ import axios from "axios"
 import { LockKeyholeIcon, User } from "lucide-react"
 import { useState } from "react"
 import toast from "react-hot-toast"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const SignUp = () => {
 
@@ -68,6 +68,7 @@ const SignUp = () => {
                     <LockKeyholeIcon size={18} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
                 </div>
                 <Button onClick={submitHandler} className="w-full mt-4 bg-red-500 hover:bg-red-400">Signup</Button>
+                <p className="text-[10px] text-center mt-2 text-slate-400 hover:underline hover:text-sky-600"><Link to={"/login"}>Already have an account ? click here</Link></p>
             </div>
         </div>
     )
