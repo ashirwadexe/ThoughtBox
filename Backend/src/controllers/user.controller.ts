@@ -127,3 +127,54 @@ export const logout = async (req: Request, res: Response): Promise<void> => {
         return;
     }
 };
+
+export const deleteAccount = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const token = req.cookies?.token;
+        if (!token) {
+            res.status(401).json({
+                message: "Unauthorized! Please login",
+                success: false
+            });
+            return;
+        }
+
+        let decode;
+        try {
+            decode = jwt.verify(token, process.env.SECRET_KEY || "8282hu2dh8g28e");
+        } catch (error) {
+            res.status(401).json({
+                message: "Invalid Token",
+                success: false
+            });
+            return;
+        }
+
+        const userId = (decode as { userId: string }).userId;
+
+        const user = await User.findById(userId);
+        if (!user) {
+            res.status(404).json({
+                message: "User not exist!",
+                success: false
+            });
+            return;
+        }
+
+        await user.deleteOne();
+
+        res.status(200).json({
+            message: "Account Deleted, Hope to see you again🥹",
+            success: true
+        });
+        return;
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: "Server Error",
+            success: false,
+        });
+        return;
+    }
+}
