@@ -26,7 +26,7 @@ const Sidebar = () => {
     }
 
     return (
-        <div className="bg-gray-100 max-w-[15rem] min-h-screen p-3">
+        <div className="bg-gray-100 max-w-[15rem] min-h-screen p-4 fixed">
             <div className="flex items-center gap-1">
                 <LucideBrainCircuit size={35} className="text-red-500 font-bold" />
                 <h1 className="text-2xl font-semibold font-poppins text-red-500">BrainBox</h1>
